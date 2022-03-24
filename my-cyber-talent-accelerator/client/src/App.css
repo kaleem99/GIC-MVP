@@ -1,0 +1,81 @@
+.Home {
+  width: 100%;
+  height: 100%;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  padding-top: 5px;
+  /* overflow: hidden; */
+  /* background-color: #333; */
+}
+input {
+  width: 100%;
+  height: 15%;
+}
+li {
+  float: right;
+  border-right: 2px solid white;
+  /* border-top: 2px; */
+  /* padding: 1px; */
+}
+.left {
+  float: left;
+  padding-left: 10px;
+}
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: white;
+  color: black;
+}
+.UserCards {
+  width: 100%;
+  height: 80%;
+  background-color: darkblue;
+  margin: auto;
+  /* background-color: white; */
+}
+
+.User {
+  width: 200px;
+  height: 300px;
+  margin: auto 10px;
+  display: inline-flex;
+  border-radius: 10px;
+  background-color: white;
+}
+.App {
+  width: 100%;
+  height: 1000px;
+  /* background-color: aqua; */
+}
+.inputBlock {
+  display: inline-block;
+  width: 50%;
+}
+.picture-div {
+  height: 220px;
+}
+.pic{
+  border-radius: 50%;
+  width: 80%;
+}
+@media (max-height: 700px) {
+  .picture-div {
+    height: 150px;
+  }
+  .pic{
+    height: 120px;
+  }
+}
+.studentPage{
+  height: 1200px;
+}
