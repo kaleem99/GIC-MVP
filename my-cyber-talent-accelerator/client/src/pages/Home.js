@@ -5,6 +5,8 @@ import DisplayUserCard from "../components/MapCard";
 import { companiesData } from "../constants/companies";
 import BottomPartOfPage from "../components/footer";
 import DisplayTrendingCertifications from "../components/TrendingCertifications";
+import GetAndDisplayJobPosts from "../components/DisplayJobPosts";
+
 const HomePage = () => {
   const [data, setData] = useState(null);
   useEffect(() => {
@@ -25,11 +27,13 @@ const HomePage = () => {
         <h2>Trending Certifications</h2>
         <br></br>
         <br></br>
-        <DisplayTrendingCertifications/>
+        <DisplayTrendingCertifications />
       </div>
       <br></br>
       <div className="h-75 w-100 br2 bg-yellow">
         <h2>Our Latest Job Postings</h2>
+        <br></br>
+        <GetAndDisplayJobPosts />
       </div>
       <br></br>
       <div className="w-100 h-25 bg-light-gray br2">

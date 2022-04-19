@@ -38,7 +38,6 @@ function SignUp() {
       .then((result) => setData(JSON.stringify(result.message)))
       .catch((err) => console.log("error"));
   };
-  const checkIfUserExist = () => {};
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(data);

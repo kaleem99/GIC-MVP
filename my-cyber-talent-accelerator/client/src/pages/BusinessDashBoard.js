@@ -1,11 +1,14 @@
 import { Link } from "react-router-dom";
 export default function BusinessDashBoard() {
+  const redirectToJobPost = () => {
+    window.location.href = "/job-post";
+  }
   return (
     <div className="w-100 h-100 bg-light-gray">
       <nav className="w-100 bg-white h3 br2 tc ma1 shadow-2">
         <ul>
           <li>
-            <button className="bg-light-red w4 br3 h2 mr2 white">Post Service</button>
+            <button className="bg-light-red w4 br3 h2 mr2 white" onClick={redirectToJobPost}>Post Service</button>
           </li>
           <li className="left">
             <p className="w-100">MiCyber Talent Accelerator</p>

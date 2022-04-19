@@ -8,35 +8,6 @@ function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  useEffect(() => {
-    fetch("http://localhost:5000/visitors", {
-      method: "GET",
-    })
-      .then((res) => res.json())
-      .then((result) => setVisitors(result.message))
-      .catch((err) => console.log("error"));
-  }, []);
-  const checkLoginDetails = () => {
-    const arr = [];
-    visitors.forEach((element) => {
-      if (element.email === email) {
-        arr.push(element);
-      }
-    });
-    if (arr.length === 0) {
-      alert("User does not exist");
-      return 0;
-    } else {
-      if (arr[0].password === password) {
-        alert("logging in");
-        window.location.href = "/Profile:1";
-        return 0;
-      } else {
-        alert("Password is incorrect");
-        return 0;
-      }
-    }
-  };
   const handleChange1 = (event) => {
     setEmail(event.target.value);
   };
@@ -45,13 +16,41 @@ function LoginPage() {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    checkLoginDetails();
+    PostLoginDetails();
   };
+  const PostLoginDetails = () => {
+    fetch("http://localhost:5000/visitors", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+      }),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        setVisitors(JSON.stringify(result.message));
+        setID(JSON.stringify(result.id));
+        console.log(result.message);
+        if (result.id == 0) {
+          alert(result.message);
+        } else {
+          alert(result.message);
+          if (result.message == "correct") {
+            window.location.href = `/Profile:${result.id}`;
+          }
+        }
+      })
+      .catch((err) => console.log("error"));
+  };
+
   return (
     <div className="w-100 bg-white h-50">
       <div class="flex">
         <div className="w-50 vh-75 bg-light-gray br3 ma1 pt6">
-          {/* <h1>User ID: {visitors}</h1> */}
+          {/* <h3>User ID: {id}</h3> */}
           <div className="w-75 h4 center">
             <h2>Sign into MiCyber Talent Accelerator</h2>
           </div>
@@ -89,7 +88,7 @@ function LoginPage() {
           <div className="w-100 pt4 h3 center">
             <hr></hr>
             <p className="tc">
-              Dont have an account? <a href="">Register here</a>
+              Dont have an account? <a href="/">Register here</a>
             </p>
           </div>
         </div>
