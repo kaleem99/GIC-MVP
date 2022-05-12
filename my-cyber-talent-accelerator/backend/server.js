@@ -19,7 +19,9 @@ const {
   getVisitorId,
   getVisitorDetails,
   createJobPostTable,
-  postJob
+  postJob,
+  createStudentProfileTable,
+  addStudentProfile
 } = require("./databaseFunctions");
 app.use(cors());
 app.use(
@@ -27,11 +29,13 @@ app.use(
     extended: true,
   })
 );
+
 createTable();
 createJobPostTable();
+createStudentProfileTable();
 app.use(bodyParser.json());
 app.get("/api", async (req, res) => {
-  // console.log("Hello1")
+  // console.log("Hello1") 
   const result = await getVisitorId();
   const emails = [];
   result.rows.filter((obj) => {
@@ -39,13 +43,14 @@ app.get("/api", async (req, res) => {
   });
   res.json({ message: emails });
 });
-app.get("/Profile:id", (req, res) => {
-  console.log("Welcome");
-});
+// app.get("/Profile:id", (req, res) => {
+//   // addStudentProfile(2, "Princeton", "Nick@22", "California", "Security+", "CompTIA PenTest+", "CISM", "Love ethical hacking and penetration testing");
+//   console.log(req.params['id'])
+// }); 
 app.post("/api", async (req, res) => {
   const { name, email, password1 } = req.body;
   const result = await getVisitorDetails(email);
-  addNewVisitor(name, email, password1);
+  addNewVisitor(name, email, password1, new Date().toDateString());
 });
 // app.get("sign-up", (req, res) => {
 
@@ -77,6 +82,12 @@ app.get("/getJobs", async(req, res) => {
   const result = await pool.query(`SELECT * FROM JobPosts ORDER BY id DESC;`);
   // console.log(result.rows);
   res.send({data: result.rows.slice(0, 8)});
+})
+app.get("/users-students", (req, res) => {
+
+})
+app.post("/studentProfile:id", (req, res) => {
+  console.log(req.body);
 })
 app.listen(PORT, () => {
   console.log(`Server listening on http://localhost:${PORT}`);

@@ -16,7 +16,7 @@ export default function GetAndDisplayJobPosts() {
   return data.map((val) => {
     return (
       <div className="bg-white tc w-75 center h3 ma3 br3">
-        <table className="table br3">
+        <table className="table br3 ma1">
           <tr>
             <th>Job Title</th>
             <th>Company</th>
@@ -30,6 +30,7 @@ export default function GetAndDisplayJobPosts() {
             <td>{val.salary}</td>
             <td>{val.city}</td>
             <td>{val.description}</td>
+            <td><button className="w4 h2 br2 bg-red">View Details</button></td>
           </tr>
         </table>
       </div>

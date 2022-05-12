@@ -1,6 +1,19 @@
 import BottomPartOfPage from "../components/footer";
+import React, { useState, useEffect } from "react";
 
 export default function StudentGridPage() {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    FetchGetRequest();
+  }, []);
+  const FetchGetRequest = () => {
+    fetch("http://localhost:5000/getJobs", {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((result) => setData(result.data))
+      .catch((err) => console.log("error"));
+  };
   return (
     <div className=" studentPage w-100">
       <div className="w-100 h4 bg-gray"></div>

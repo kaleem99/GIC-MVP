@@ -40,7 +40,6 @@ function SignUp() {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(data);
     setTimeout(() => {
       if (password1 !== password2) {
         alert("password does not match");

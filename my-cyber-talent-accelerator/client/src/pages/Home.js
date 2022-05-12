@@ -30,7 +30,7 @@ const HomePage = () => {
         <DisplayTrendingCertifications />
       </div>
       <br></br>
-      <div className="h-75 w-100 br2 bg-yellow">
+      <div className="h-75 w-100 br2 bg-light-red">
         <h2>Our Latest Job Postings</h2>
         <br></br>
         <GetAndDisplayJobPosts />

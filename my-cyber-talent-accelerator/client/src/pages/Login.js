@@ -33,7 +33,6 @@ function LoginPage() {
       .then((result) => {
         setVisitors(JSON.stringify(result.message));
         setID(JSON.stringify(result.id));
-        console.log(result.message);
         if (result.id == 0) {
           alert(result.message);
         } else {
