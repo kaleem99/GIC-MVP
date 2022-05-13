@@ -13,7 +13,7 @@ function createTable() {
 
 function addNewVisitor(name, email, password, member) {
   pool.query(
-    `INSERT INTO Visitors(name, email, password, membersince) VALUES($1, $2, $3, $3);`,
+    `INSERT INTO Visitors(name, email, password, membersince) VALUES($1, $2, $3, $4);`,
     [name, email, password, member]
   );
 }
@@ -85,6 +85,12 @@ async function getVisitorDetails(email) {
   ]);
   return result;
 }
+async function getStudentProfile(id) {
+  const result = pool.query(`SELECT * FROM StudentProfile WHERE id = $1;`, [
+    id,
+  ]);
+  return result;
+}
 // getVisitorDetails("kaleemnike1@gmail.com").then((res) => console.log(res.rows))
 module.exports = {
   createTable,
@@ -95,4 +101,5 @@ module.exports = {
   postJob,
   createStudentProfileTable,
   addStudentProfile,
+  getStudentProfile
 };

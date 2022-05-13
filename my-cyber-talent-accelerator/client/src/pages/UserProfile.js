@@ -13,7 +13,7 @@ export default function Profile() {
     FetchGetRequest();
   }, []);
   const FetchGetRequest = () => {
-    fetch("http://localhost:5000/Profile:id", {
+    fetch("http://localhost:5000/completeStudentProfile:id", {
       method: "GET",
     })
       .then((res) => res.json())

@@ -23,7 +23,7 @@ function App() {
             <Route path="contact-us" element={<ContactPage />}></Route>
             <Route path="Student-grid" element={<StudentGridPage />}></Route>
           </Route>
-          <Route path="Profile:id" element={<Profile />}></Route>
+          <Route path="completeStudentProfile:id" element={<Profile />}></Route>
           <Route
             path="Business-Profile:id"
             element={<BusinessDashBoard />}

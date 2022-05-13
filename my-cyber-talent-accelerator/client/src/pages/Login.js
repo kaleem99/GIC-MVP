@@ -38,7 +38,12 @@ function LoginPage() {
         } else {
           alert(result.message);
           if (result.message == "correct") {
-            window.location.href = `/Profile:${result.id}`;
+            if(result.profileExist.length === 0){
+              window.location.href = `/completeStudentProfile:${result.id}`;
+            }
+            else{
+              window.location.href = `/`;
+            }
           }
         }
       })
