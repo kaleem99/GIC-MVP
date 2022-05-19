@@ -110,3 +110,38 @@ th {
 .grid{
   overflow-y: auto;
 }
+
+.blog-container {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: auto auto auto auto;
+  background-color: none;
+  padding: 10px;
+}
+
+.blog-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  /* border: 1px solid rgba(0, 0, 0, 0.8); */
+  padding: 20px;
+  /* font-size: 30px; */
+  text-align: center;
+  width: 100%;
+  height: auto;
+  /* border-radius: 10px; */
+}
+
+.trending-container {
+  display: grid;
+  gap: 50px;
+  grid-template-columns: auto auto auto auto;
+  padding: 10px;
+}
+
+.trending-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  /* border: 1px solid rgba(0, 0, 0, 0.8); */
+  padding: 2px;
+  text-align: center;
+  width: 100%;
+  height: 150px;
+}

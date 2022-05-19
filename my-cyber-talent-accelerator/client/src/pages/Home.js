@@ -6,7 +6,7 @@ import { companiesData } from "../constants/companies";
 import BottomPartOfPage from "../components/footer";
 import DisplayTrendingCertifications from "../components/TrendingCertifications";
 import GetAndDisplayJobPosts from "../components/DisplayJobPosts";
-
+import LatestBlogNews from "../components/latestBlogNews"
 const HomePage = () => {
   const [data, setData] = useState(null);
   useEffect(() => {
@@ -46,7 +46,9 @@ const HomePage = () => {
       <br></br>
       <div className="w-100 h-50 bg-light-gray br2">
         <h2>Latest Blog News</h2>
+        <LatestBlogNews/>
       </div>
+      <div className="w-100 h4 bg-gray"></div>
       <BottomPartOfPage />
     </div>
   );

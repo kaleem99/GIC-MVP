@@ -33,16 +33,16 @@ function LoginPage() {
       .then((result) => {
         setVisitors(JSON.stringify(result.message));
         setID(JSON.stringify(result.id));
-        if (result.id == 0) {
+        if (result.id === 0) {
           alert(result.message);
         } else {
           alert(result.message);
-          if (result.message == "correct") {
+          if (result.message === "correct") {
             if(result.profileExist.length === 0){
               window.location.href = `/completeStudentProfile:${result.id}`;
             }
             else{
-              window.location.href = `/`;
+              window.location.href = `/user-Profile:${result.id}`;
             }
           }
         }
@@ -92,7 +92,7 @@ function LoginPage() {
           <div className="w-100 pt4 h3 center">
             <hr></hr>
             <p className="tc">
-              Dont have an account? <a href="/">Register here</a>
+              Dont have an account? <a href="/sign-up">Register here</a>
             </p>
           </div>
         </div>

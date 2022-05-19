@@ -21,6 +21,7 @@ export default function UserProfileDashBoard() {
     setStudent(result.studentProfile[id-1]);
     return true;
   }
+  console.log(student)
   return (
     <div className="w-100 h-100 bg-light-gray">
       <nav className="w-100 bg-white h3 br2 tc ma1 shadow-2">

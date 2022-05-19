@@ -29,7 +29,7 @@ export default function StudentGridPage() {
                   <StudentCard
                     name={res.name}
                     description={res.description}
-                    skills={res.skill1}
+                    skills={[res.skill1, res.skill2, res.skills3]}
                   />
                 );
               })}

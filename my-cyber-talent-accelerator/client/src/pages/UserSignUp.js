@@ -83,7 +83,7 @@ function SignUp() {
       <div class="flex">
         <div className="w-50 vh-75 bg-light-gray br3 pt5 ma1">
           <div className="w-75 h3 center">
-            <h2>Register With Us</h2>
+            <h2>Register With Us Students</h2>
             <p>
               Create a new account with us and start applying to some of the
               most trusted companies.
@@ -149,7 +149,9 @@ function SignUp() {
           <div className="w-100 pt4 h3 center">
             <hr></hr>
             <p className="tc">
-              Already have an account? <a href="">Login here</a>
+              Already have an account? <a href="/log-in">Login here</a>
+              <br></br>
+              <br></br>Business account sign up <a href="/business-sign-up">Sign Up</a>
             </p>
           </div>
         </div>
