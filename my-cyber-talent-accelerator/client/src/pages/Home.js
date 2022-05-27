@@ -22,9 +22,9 @@ const HomePage = () => {
       <br></br>
       <div className="w-100 h-25 tc bg-navy shadow-5 pa3 br2">
         {/* <DisplayUserCard cardData={userInformation} /> */}
+        <h2 className="white mt6">Trending Certifications</h2>
       </div>
       <div className="w-100 h-50 bg-white br2 shadow-3">
-        <h2>Trending Certifications</h2>
         <br></br>
         <br></br>
         <DisplayTrendingCertifications />
@@ -48,7 +48,7 @@ const HomePage = () => {
         <h2>Latest Blog News</h2>
         <LatestBlogNews/>
       </div>
-      <div className="w-100 h4 bg-gray"></div>
+      <div className="w-100 h4 bg-gray br3"></div>
       <BottomPartOfPage />
     </div>
   );

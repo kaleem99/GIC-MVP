@@ -92,6 +92,44 @@ async function getStudentProfile(id) {
   return result;
 }
 // getVisitorDetails("kaleemnike1@gmail.com").then((res) => console.log(res.rows))
+
+async function createCompanyTable() {
+  pool.query(`CREATE TABLE IF NOT EXISTS CompanyBusiness(
+    ID SERIAL PRIMARY KEY,
+    companyName varchar(50) NOT NULL,
+    ProfileName varchar(50) NOT NULL,
+    Password varchar(16) NOT NULL,
+    location varchar(50) NOT NULL,
+    joinedDate DATE NOT NULL,
+    businessEmail varchar(50) NOT NULL,
+    industry varchar(25) NOT NULL,
+    aboutCompany varchar(250)
+);`);
+}
+function addNewBusinessCompany(
+  companyName,
+  ProfileName,
+  password,
+  location,
+  joinedDate,
+  businessEmail,
+  industry,
+  AboutCompany
+) {
+  pool.query(
+    `INSERT INTO companybusiness(companyname, profilename, password, location, joineddate, businessemail, industry, aboutcompany) VALUES($1, $2, $3, $4, $5, $6, $7, $8);`,
+    [
+      companyName,
+      ProfileName,
+      password,
+      location,
+      joinedDate,
+      businessEmail,
+      industry,
+      AboutCompany,
+    ]
+  );
+}
 module.exports = {
   createTable,
   addNewVisitor,
@@ -101,5 +139,7 @@ module.exports = {
   postJob,
   createStudentProfileTable,
   addStudentProfile,
-  getStudentProfile
+  getStudentProfile,
+  createCompanyTable,
+  addNewBusinessCompany
 };

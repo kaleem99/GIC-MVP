@@ -30,6 +30,7 @@ export default function StudentGridPage() {
                     name={res.name}
                     description={res.description}
                     skills={[res.skill1, res.skill2, res.skills3]}
+                    i={i+1}
                   />
                 );
               })}

@@ -22,7 +22,9 @@ const {
   postJob,
   createStudentProfileTable,
   addStudentProfile,
-  getStudentProfile
+  getStudentProfile,
+  createCompanyTable,
+  addNewBusinessCompany,
 } = require("./databaseFunctions");
 app.use(cors());
 app.use(
@@ -34,9 +36,11 @@ app.use(
 createTable();
 createJobPostTable();
 createStudentProfileTable();
+createCompanyTable();
+
 app.use(bodyParser.json());
 app.get("/api", async (req, res) => {
-  // console.log("Hello1") 
+  // console.log("Hello1")
   const result = await getVisitorId();
   const emails = [];
   result.rows.filter((obj) => {
@@ -62,7 +66,7 @@ app.post("/visitors", async (req, res) => {
   let userID = 0;
   const result = await getVisitorDetails(email);
   if (result.rows.length === 1) {
-    userID = result.rows[0].id; 
+    userID = result.rows[0].id;
   }
   if (result.rowCount === 1) {
     if (result.rows[0].password === password) {
@@ -74,30 +78,77 @@ app.post("/visitors", async (req, res) => {
     resultMessage = "User Does not exist";
   }
   const studentResult = await getStudentProfile(userID);
-  res.json({ message: resultMessage, id: userID, profileExist: studentResult.rows });
+  res.json({
+    message: resultMessage,
+    id: userID,
+    profileExist: studentResult.rows,
+  });
 });
 app.post("/jobs", (req, res) => {
   const { jobTitle, company, salary, city, description } = req.body;
   postJob(jobTitle, company, salary, city, description);
 });
-app.get("/getJobs", async(req, res) => {
+app.get("/getJobs", async (req, res) => {
   const result = await pool.query(`SELECT * FROM JobPosts ORDER BY id DESC;`);
   // console.log(result.rows);
-  res.send({data: result.rows.slice(0, 8)});
-})
-app.get("/user-profile:id", async(req, res) => {
+  res.send({ data: result.rows.slice(0, 8) });
+});
+app.get("/user-profile:id", async (req, res) => {
   const result1 = await pool.query(`SELECT * FROM StudentProfile;`);
   const result2 = await pool.query(`SELECT * FROM Visitors;`);
-  res.json({userProfile: result2.rows, studentProfile: result1.rows});
-}) 
+  res.json({ userProfile: result2.rows, studentProfile: result1.rows });
+});
 app.post("/studentProfile:id", (req, res) => {
-  const {ID, Uname, Pname, location, skill1, skill2, skill3, AboutYou} = req.body;
-  addStudentProfile(ID, Uname, Pname, location, skill1, skill2, skill3, AboutYou);
-})
-app.get("/Student-grid", async(req, res) => {
-  const result = await pool.query(`SELECT * FROM Visitors INNER JOIN StudentProfile ON Visitors.id = StudentProfile.id;`);
-  res.json({studentData: result.rows})
-})
+  const { ID, Uname, Pname, location, skill1, skill2, skill3, AboutYou } =
+    req.body;
+  addStudentProfile(
+    ID,
+    Uname,
+    Pname,
+    location,
+    skill1,
+    skill2,
+    skill3,
+    AboutYou
+  );
+});
+app.get("/Student-grid", async (req, res) => {
+  const result = await pool.query(
+    `SELECT * FROM Visitors INNER JOIN StudentProfile ON Visitors.id = StudentProfile.id;`
+  );
+  res.json({ studentData: result.rows });
+});
+
+app.get("/View-StudentProfile:id", async (req, res) => {
+  const result = await pool.query(
+    `SELECT * FROM Visitors INNER JOIN StudentProfile ON Visitors.id = StudentProfile.id;`
+  );
+  console.log(result.rows);
+  res.json({ studentData: result.rows });
+});
+
+app.post("/newCompanyBusiness", async (req, res) => {
+  const {
+    BusinessName,
+    Pname,
+    password,
+    location,
+    businessEmail,
+    industry,
+    AboutCompany,
+  } = req.body;
+  const date = new Date().toISOString().toString().slice(0, 10);
+  addNewBusinessCompany(
+    BusinessName,
+    Pname,
+    password,
+    location, 
+    date,
+    businessEmail,
+    industry,
+    AboutCompany
+  );
+});
 app.listen(PORT, () => {
   console.log(`Server listening on http://localhost:${PORT}`);
 });

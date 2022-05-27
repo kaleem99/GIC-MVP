@@ -21,16 +21,15 @@ export default function UserProfileDashBoard() {
     setStudent(result.studentProfile[id-1]);
     return true;
   }
-  console.log(student)
   return (
     <div className="w-100 h-100 bg-light-gray">
       <nav className="w-100 bg-white h3 br2 tc ma1 shadow-2">
         <ul>
-          <li>
-            {/* <button className="bg-light-red w4 br3 h2 mr2 white">Post Service</button> */}
-          </li>
           <li className="left">
             <p className="w-100">MiCyber Talent Accelerator</p>
+          </li>
+          <li>
+            <button className="bg-light-red mr3 mt2 br3 h2" onClick={window.location.href="/"}>HomePage</button>
           </li>
         </ul>
       </nav>

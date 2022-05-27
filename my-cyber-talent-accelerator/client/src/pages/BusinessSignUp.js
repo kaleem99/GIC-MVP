@@ -2,14 +2,15 @@ import React, { useState, useEffect } from "react";
 
 export default function BusinessSignUp() {
   const ID = window.location.href.split(":")[3];
-  const [Uname, setUName] = useState("");
+  const [BusinessName, setBusinessName] = useState("");
   const [Pname, setPName] = useState("");
+  const [password, setPassword] = useState("");
   const [location, setLocation] = useState("");
-  const [skill1, setSkill1] = useState("");
-  const [skill2, setSkill2] = useState("");
-  const [AboutYou, setAboutYou] = useState("");
+  const [businessEmail, setBusinessEmail] = useState("");
+  const [industry, setIndustry] = useState("");
+  const [AboutCompany, setAboutCompany] = useState("");
   useEffect(() => {
-    FetchGetRequest();
+    // FetchGetRequest();
   }, []);
   const FetchGetRequest = () => {
     fetch("http://localhost:5000/completeStudentProfile:id", {
@@ -20,19 +21,20 @@ export default function BusinessSignUp() {
       .catch((err) => console.log("error"));
   };
   const FetchPostRequest = () => {
-    fetch("http://localhost:5000/studentProfile:id", {
+    fetch("http://localhost:5000/newCompanyBusiness", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
         ID: ID,
-        Uname: Uname,
+        BusinessName: BusinessName,
         Pname: Pname,
+        password: password,
         location: location,
-        skill1: skill1,
-        skill2: skill2,
-        AboutYou: AboutYou
+        businessEmail: businessEmail,
+        industry: industry,
+        AboutCompany: AboutCompany
       }),
     })
       .then((res) => res.json())
@@ -42,25 +44,28 @@ export default function BusinessSignUp() {
   const handleSubmit = (event) => {
     event.preventDefault();
     FetchPostRequest();
-    window.location.href = "/";
+    // window.location.href = "/";
   };
   const handleChange1 = (event) => {
-    setUName(event.target.value)
+    setBusinessName(event.target.value)
   };
   const handleChange2 = (event) => {
     setPName(event.target.value)
   };
   const handleChange3 = (event) => {
-    setLocation(event.target.value)
+    setPassword(event.target.value)
   };
   const handleChange4 = (event) => {
-    setSkill1(event.target.value)
+    setLocation(event.target.value)
   };
   const handleChange5 = (event) => {
-    setSkill2(event.target.value)
+    setBusinessEmail(event.target.value)
+  };
+  const handleChange6 = (event) => {
+    setIndustry(event.target.value)
   };
   const handleChange7 = (event) => {
-    setAboutYou(event.target.value)
+    setAboutCompany(event.target.value)
   };
   return (
     <div className="w-100 h-100 bg-light-gray tc">
@@ -92,7 +97,7 @@ export default function BusinessSignUp() {
         </label>
         <br></br>
         <label>
-          Your Location
+          Password
           <br></br>
           <input
             className="ba pa2 mb1 db w-100"
@@ -104,13 +109,25 @@ export default function BusinessSignUp() {
         </label>
         <br></br>
         <label>
+          Your Location
+          <br></br>
+          <input
+            className="ba pa2 mb1 db w-100"
+            type="text"
+            // value="Required"
+            onChange={handleChange4}
+            required
+          />
+        </label>
+        <br></br>
+        <label>
            Business Email
           <br></br>
           <input
             className="ba pa2 mb3 db w-100"
             type="text"
             // value="Required"
-            onChange={handleChange4}
+            onChange={handleChange5}
             required
           />
           <br></br>
@@ -122,7 +139,7 @@ export default function BusinessSignUp() {
             className="ba pa2 mb3 db w-100"
             type="text"
             // value="Not Required"
-            onChange={handleChange5}
+            onChange={handleChange6}
             // required
           />
           <br></br>

@@ -11,7 +11,7 @@ import UserProfileDashBoard from "./pages/UserDashBoard";
 import StudentGridPage from "./pages/StudentGrid";
 import PostAJob from "./pages/PostJob";
 import BusinessSignUp from "./pages/BusinessSignUp";
-
+import StudentProfileView from "./pages/studentProfilePage";
 function App() {
   return (
     <div className="App">
@@ -35,7 +35,11 @@ function App() {
             element={<UserProfileDashBoard />}
           ></Route>
           <Route path="job-post" element={<PostAJob />}></Route>
-          <Route path="business-sign-up" element={<BusinessSignUp/>}></Route>
+          <Route path="business-sign-up" element={<BusinessSignUp />}></Route>
+          <Route
+            path="View-StudentProfile:id"
+            element={<StudentProfileView />}
+          ></Route>
         </Routes>
       </BrowserRouter>
     </div>

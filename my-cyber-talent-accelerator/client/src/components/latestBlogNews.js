@@ -7,7 +7,7 @@ export default function LatestBlogNews() {
   }, []);
   const FetchGetRequest = () => {
     fetch(
-      "https://newsapi.org/v2/everything?q=tesla&from=2022-04-19&sortBy=publishedAt&apiKey=d83a888e01bc4ee8b877804853dc83d4",
+      `https://newsapi.org/v2/everything?q=tesla&from=2022-04-${new Date().getDate()}&sortBy=publishedAt&apiKey=d83a888e01bc4ee8b877804853dc83d4`,
       {
         method: "GET",
       }
@@ -21,7 +21,7 @@ export default function LatestBlogNews() {
       {state.slice(0, 4).map((data, i) => {
           return (
               <div className="blog-item">
-                  <img src={data.urlToImage}></img>
+                  <img className="w-75" src={data.urlToImage}></img>
                   <p>{data.title}</p>
                   <h4>{data.publishedAt}</h4>
                   <a className="red" href={data.url}>Read More</a>

@@ -1,7 +1,7 @@
-export default function BottomPartOfPage(){
-    return (
-        <div className="">
-          <div class="flex h-50 w-100 tc">
+export default function BottomPartOfPage() {
+  return (
+    <div className="">
+      <div class="flex h-50 w-100 tc">
         <div class="ml2 w-25 h5 mt5 mr2">
           <h2>Company Logo</h2>
           <p>Random company Text that needs to be changed</p>
@@ -35,9 +35,12 @@ export default function BottomPartOfPage(){
             <p>Sign In Page</p>
           </a>
           <a href="/contact-us">Contact Us</a>
+          <a href="/Student-grid">
+            <p>View All Students</p>
+          </a>
         </div>
       </div>
-      <div className="w-100 h3 bg-dark-gray mt0 br1"></div>
-        </div>
-    )
+      <div className="w-100 h3 bg-dark-gray mt0 br3"></div>
+    </div>
+  );
 }

@@ -78,10 +78,10 @@ function SignUp() {
   };
 
   return (
-    <div className="h-50 w-100 bg-white">
+    <div className="h-75 w-100 bg-white">
       {/* <h3>DATA: {email}</h3> */}
       <div class="flex">
-        <div className="w-50 vh-75 bg-light-gray br3 pt5 ma1">
+        <div className="w-50 h-75 bg-light-gray br3 pt2 ma1">
           <div className="w-75 h3 center">
             <h2>Register With Us Students</h2>
             <p>
@@ -146,16 +146,17 @@ function SignUp() {
             <input className="bg-light-red white pt2" type="submit" />
           </form>
           <br></br>
-          <div className="w-100 pt4 h3 center">
+          <div className="vw-100 pt4 h4 center bg-light-gray">
             <hr></hr>
             <p className="tc">
               Already have an account? <a href="/log-in">Login here</a>
-              <br></br>
-              <br></br>Business account sign up <a href="/business-sign-up">Sign Up</a>
+              <p></p>
+              Business account sign up <a href="/business-sign-up">Sign Up</a>
             </p>
           </div>
         </div>
-        <div className="w-50 vh-75 bg-gray ma1 br3"></div>
+        <div className="w-50 vh-75 bg-gray ma1 br3">
+        </div>
       </div>
       <BottomPartOfPage />
     </div>
