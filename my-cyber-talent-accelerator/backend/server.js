@@ -142,13 +142,36 @@ app.post("/newCompanyBusiness", async (req, res) => {
     BusinessName,
     Pname,
     password,
-    location, 
+    location,
     date,
     businessEmail,
     industry,
     AboutCompany
   );
 });
+app.post("/Business-Sign-In", async (req, res) => {
+  console.log(req.body.username)
+  let resultData = "Incorrect";
+  let id = 0;
+  try {
+    const result = await pool.query(
+      `SELECT * FROM companybusiness WHERE profilename = $1;`, [req.body.username]
+    );
+    if(result.rows.length === 1){
+      if(result.rows[0].password === req.body.password){
+        resultData = "Correct";
+        id = result.rows[0].id;
+      }
+    }
+  } catch (err) {
+    console.log(err.message);
+  }
+  res.json({data: resultData, id: id})
+});
+app.get("/Business-GridPage", async(req, res) => {
+  const result = await pool.query(`SELECT * FROM companybusiness;`)
+  res.json({businessData: result.rows});
+})
 app.listen(PORT, () => {
   console.log(`Server listening on http://localhost:${PORT}`);
 });

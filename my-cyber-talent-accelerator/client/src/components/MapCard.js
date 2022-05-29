@@ -1,3 +1,5 @@
+import React from "react";
+
 const DisplayUserCard = ({cardData}) => {
     return cardData.map((user, id) => {
       return (

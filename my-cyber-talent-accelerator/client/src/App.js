@@ -1,4 +1,5 @@
 import "./App.css";
+import React from 'react'
 import HomePage from "./pages/Home";
 import SignUp from "./pages/UserSignUp";
 import LoginPage from "./pages/Login";
@@ -12,6 +13,9 @@ import StudentGridPage from "./pages/StudentGrid";
 import PostAJob from "./pages/PostJob";
 import BusinessSignUp from "./pages/BusinessSignUp";
 import StudentProfileView from "./pages/studentProfilePage";
+import SignInComBus from "./pages/BusinessSignIn";
+import BusinessGridPage from "./pages/BusinessDashBoardGrid";
+
 function App() {
   return (
     <div className="App">
@@ -39,6 +43,14 @@ function App() {
           <Route
             path="View-StudentProfile:id"
             element={<StudentProfileView />}
+          ></Route>
+          <Route
+            path="Business-Sign-In"
+            element={<SignInComBus />}
+          ></Route>
+          <Route
+            path="Business-GridPage"
+            element={<BusinessGridPage />}
           ></Route>
         </Routes>
       </BrowserRouter>

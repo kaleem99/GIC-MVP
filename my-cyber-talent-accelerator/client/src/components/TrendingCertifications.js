@@ -1,4 +1,5 @@
 import Certifications from "../constants/certifications";
+import React from "react";
 
 export default function DisplayTrendingCertifications() {
   return (

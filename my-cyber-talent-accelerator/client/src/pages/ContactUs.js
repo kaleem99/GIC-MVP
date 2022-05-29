@@ -1,3 +1,5 @@
+import React from "react";
+
 import BottomPartOfPage from "../components/footer";
 export default function ContactPage() {
   return (

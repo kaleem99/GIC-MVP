@@ -1,6 +1,6 @@
 import { userInformation } from "../constants/usersData";
 import "../App.css";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import DisplayUserCard from "../components/MapCard";
 import { companiesData } from "../constants/companies";
 import BottomPartOfPage from "../components/footer";

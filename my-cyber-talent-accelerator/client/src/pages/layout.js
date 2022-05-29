@@ -1,4 +1,5 @@
 import { Outlet, Link } from "react-router-dom";
+import React from "react";
 import BottomPartOfPage from "../components/footer";
 const Layout = () => {
   return (

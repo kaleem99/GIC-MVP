@@ -1,15 +1,12 @@
-import { element } from "prop-types";
-import React, { useState, useEffect } from "react";
 import BottomPartOfPage from "../components/footer";
+import React, { useState } from "react";
+// import { json } from "body-parser";
 
-function LoginPage() {
-  const [id, setID] = useState("");
-  const [visitors, setVisitors] = useState("");
-  const [email, setEmail] = useState("");
+export default function SignInComBus() {
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
   const handleChange1 = (event) => {
-    setEmail(event.target.value);
+    setUsername(event.target.value);
   };
   const handleChange2 = (event) => {
     setPassword(event.target.value);
@@ -19,44 +16,34 @@ function LoginPage() {
     PostLoginDetails();
   };
   const PostLoginDetails = () => {
-    fetch("http://localhost:5000/visitors", {
+    fetch("http://localhost:5000/Business-Sign-In", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        email: email,
+        username: username,
         password: password,
       }),
     })
       .then((res) => res.json())
       .then((result) => {
-        setVisitors(JSON.stringify(result.message));
-        setID(JSON.stringify(result.id));
-        if (result.id === 0) {
-          alert(result.message);
+        if (result.data === "Correct") {
+          window.location.href = `/Business-Profile:${result.id}`;
         } else {
-          alert(result.message);
-          if (result.message === "correct") {
-            if(result.profileExist.length === 0){
-              window.location.href = `/completeStudentProfile:${result.id}`;
-            }
-            else{
-              window.location.href = `/user-Profile:${result.id}`;
-            }
-          }
+          alert("Incorrect UserName or Password");
         }
       })
       .catch((err) => console.log("error"));
   };
 
   return (
-    <div className="w-100 bg-white h-50">
+    <div className="bg-light-gray w-100 h-100">
       <div class="flex">
         <div className="w-50 vh-75 bg-light-gray br3 ma1 pt6">
           {/* <h3>User ID: {id}</h3> */}
           <div className="w-75 h4 center">
-            <h2>Sign into MiCyber Talent Accelerator</h2>
+            <h2>Sign into MiCyber Talent Accelerator Business Account</h2>
           </div>
           <form
             method="post"
@@ -92,10 +79,8 @@ function LoginPage() {
           <div className="w-100 pt4 h3 center">
             <hr></hr>
             <p className="tc">
-              Dont have an account? <a href="/sign-up">Register here</a>
-            </p>
-            <p className="tc">
-              Business Account <a href="/Business-Sign-In">Sign In</a>
+              Dont have a Business account?{" "}
+              <a href="/business-sign-up">Register here</a>
             </p>
           </div>
         </div>
@@ -105,5 +90,3 @@ function LoginPage() {
     </div>
   );
 }
-
-export default LoginPage;
