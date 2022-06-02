@@ -53,10 +53,10 @@ function LoginPage() {
   return (
     <div className="w-100 bg-white h-50">
       <div class="flex">
-        <div className="w-50 vh-75 bg-light-gray br3 ma1 pt6">
+        <div className="w-50 h-75 bg-light-gray br3 ma1 pt2">
           {/* <h3>User ID: {id}</h3> */}
           <div className="w-75 h4 center">
-            <h2>Sign into MiCyber Talent Accelerator</h2>
+            <h2>Sign into Mathiteia</h2>
           </div>
           <form
             method="post"
@@ -88,8 +88,8 @@ function LoginPage() {
             </label>
             <input className="bg-light-red white pt2" type="submit" />
           </form>
-          <br></br>
-          <div className="w-100 pt4 h3 center">
+          {/* <br></br> */}
+          <div className="w-100 pt1 h4 center bg-light-gray br3">
             <hr></hr>
             <p className="tc">
               Dont have an account? <a href="/sign-up">Register here</a>

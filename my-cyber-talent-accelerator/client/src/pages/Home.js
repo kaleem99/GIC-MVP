@@ -6,7 +6,8 @@ import { companiesData } from "../constants/companies";
 import BottomPartOfPage from "../components/footer";
 import DisplayTrendingCertifications from "../components/TrendingCertifications";
 import GetAndDisplayJobPosts from "../components/DisplayJobPosts";
-import LatestBlogNews from "../components/latestBlogNews"
+import LatestBlogNews from "../components/latestBlogNews";
+import Carousel from "react-elastic-carousel";
 const HomePage = () => {
   const [data, setData] = useState(null);
   useEffect(() => {
@@ -46,9 +47,25 @@ const HomePage = () => {
       <br></br>
       <div className="w-100 h-50 bg-light-gray br2">
         <h2>Latest Blog News</h2>
-        <LatestBlogNews/>
+        <LatestBlogNews />
       </div>
-      <div className="w-100 h4 bg-gray br3"></div>
+      <div className="w-100 h5 br3 bg-navy white">
+        <h2>Our Partners</h2>
+        <Carousel
+          enableAutoPlay={true}
+          itemsToShow={5}
+          showArrows={true}
+          autoPlaySpeed={8000}
+        >
+         {companiesData.map((data, i) => {
+           return (
+             <div className="bg-white w4 h4">
+               <img src={data.src} className="w4 h4"></img>
+             </div>
+           )
+         })}
+        </Carousel>
+      </div>
       <BottomPartOfPage />
     </div>
   );

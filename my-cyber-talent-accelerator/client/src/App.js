@@ -15,7 +15,7 @@ import BusinessSignUp from "./pages/BusinessSignUp";
 import StudentProfileView from "./pages/studentProfilePage";
 import SignInComBus from "./pages/BusinessSignIn";
 import BusinessGridPage from "./pages/BusinessDashBoardGrid";
-
+import ViewBusinessProfile from "./pages/ViewBusinessProfile";
 function App() {
   return (
     <div className="App">
@@ -51,6 +51,10 @@ function App() {
           <Route
             path="Business-GridPage"
             element={<BusinessGridPage />}
+          ></Route>
+          <Route
+            path="View-Business-Profile:id"
+            element={<ViewBusinessProfile />}
           ></Route>
         </Routes>
       </BrowserRouter>

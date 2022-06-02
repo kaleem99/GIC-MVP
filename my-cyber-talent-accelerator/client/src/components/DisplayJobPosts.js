@@ -30,7 +30,7 @@ export default function GetAndDisplayJobPosts() {
             <td>{val.salary}</td>
             <td>{val.city}</td>
             <td>{val.description}</td>
-            <td><button className="w4 h2 br2 bg-red">View Details</button></td>
+            <td><button className="w4 h2 br2 bg-red" onClick={() => window.location.href=`/View-Business-Profile:${val.id}`}>View Details</button></td>
           </tr>
         </table>
       </div>

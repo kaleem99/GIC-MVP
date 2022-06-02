@@ -7,7 +7,7 @@ export default function LatestBlogNews() {
   }, []);
   const FetchGetRequest = () => {
     fetch(
-      `https://newsapi.org/v2/everything?q=tesla&from=2022-04-${new Date().getDate()}&sortBy=publishedAt&apiKey=d83a888e01bc4ee8b877804853dc83d4`,
+      `https://newsapi.org/v2/everything?q=tesla&from=${new Date().toISOString().slice(0, 10)}&sortBy=publishedAt&apiKey=d83a888e01bc4ee8b877804853dc83d4`,
       {
         method: "GET",
       }

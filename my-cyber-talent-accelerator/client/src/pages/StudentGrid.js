@@ -15,6 +15,7 @@ export default function StudentGridPage() {
       .then((result) => setData(result.studentData))
       .catch((err) => console.log("error"));
   };
+  console.log(data)
   return (
     <div className=" studentPage w-100">
       <div className="w-100 h4 bg-gray"></div>
@@ -30,7 +31,7 @@ export default function StudentGridPage() {
                     name={res.name}
                     description={res.description}
                     skills={[res.skill1, res.skill2, res.skills3]}
-                    i={i+1}
+                    i={res.id}
                   />
                 );
               })}

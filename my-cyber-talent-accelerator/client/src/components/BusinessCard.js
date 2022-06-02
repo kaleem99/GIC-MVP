@@ -7,7 +7,7 @@ export default function BusinessCard({i, name, industry, location, description }
       <p className="description">{description}</p>
       <p>{location}</p>
       <p>{industry}</p>
-      <button><a href={`/Business-Profile:${i}`}>View Profile</a></button>
+      <button><a href={`/View-business-Profile:${i}`}>View Profile</a></button>
     </div>
   );
 }

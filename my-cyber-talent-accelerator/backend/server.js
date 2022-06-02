@@ -172,6 +172,10 @@ app.get("/Business-GridPage", async(req, res) => {
   const result = await pool.query(`SELECT * FROM companybusiness;`)
   res.json({businessData: result.rows});
 })
+app.get("/View-Business-Profile:id", async(req, res) => {
+  const result = await pool.query(`SELECT * FROM companybusiness;`)
+  res.json({businessData: result.rows});
+})
 app.listen(PORT, () => {
   console.log(`Server listening on http://localhost:${PORT}`);
 });

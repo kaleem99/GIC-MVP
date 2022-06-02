@@ -5,21 +5,21 @@ export default function StudentProfileView() {
   useEffect(() => {
     FetchGetRequest();
   }, []);
+  const id = window.location.href.split(":")[3];
   const FetchGetRequest = () => {
     fetch("http://localhost:5000/View-StudentProfile:id", {
       method: "GET",
     })
       .then((res) => res.json())
-      .then((result) => setData(result.studentData[id]))
+      .then((result) => setData(result.studentData[id-1]))
       .catch((err) => console.log("error"));
   };
-  const id = window.location.href.split(":")[3];
   //   console.log(data)
   return (
     <div className="bg-white w-100 h-100">
       <br></br>
       <div className="bg-light-gray h10 w-90 ma2 center">
-        <div class="grid-container1">
+        <div className="grid-container1">
           <div className="grid-item1">
             <img
               className="w5 h4"

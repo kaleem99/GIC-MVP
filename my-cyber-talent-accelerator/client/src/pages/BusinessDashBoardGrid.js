@@ -23,12 +23,11 @@ export default function BusinessGridPage() {
       return val.companyname === result;
     });
     setData(newData);
-    console.log(companies);
   };
   return (
     <div className=" studentPage w-100">
       <div className="w-100 h4 bg-gray">
-        <h2 className="tc white pt4">All companies Dashboard</h2>
+        <h2 className="tc white pt4">List Of All Companies</h2>
       </div>
 
       <div className="w-100 center bg-light-gray h-75">

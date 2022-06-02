@@ -40,14 +40,14 @@ export default function SignInComBus() {
   return (
     <div className="bg-light-gray w-100 h-100">
       <div class="flex">
-        <div className="w-50 vh-75 bg-light-gray br3 ma1 pt6">
+        <div className="w-50 h-75 bg-light-gray br3 ma1 pt3">
           {/* <h3>User ID: {id}</h3> */}
-          <div className="w-75 h4 center">
+          <div className="w-75 h3 center">
             <h2>Sign into MiCyber Talent Accelerator Business Account</h2>
           </div>
           <form
             method="post"
-            className="w-75 h5 center tc"
+            className="w-75 h5 center tc mt2"
             onSubmit={handleSubmit}
           >
             <br></br>
