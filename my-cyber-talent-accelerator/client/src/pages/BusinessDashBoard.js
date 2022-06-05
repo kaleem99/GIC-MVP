@@ -10,7 +10,6 @@ export default function BusinessDashBoard() {
   const [file, setFile] = useState("bmw.png");
   const handleChange = (file) => {
     setFile(file[0].name);
-    console.log(file[0].name);
   };
   return (
     <div className="w-100 h-100 bg-light-gray">

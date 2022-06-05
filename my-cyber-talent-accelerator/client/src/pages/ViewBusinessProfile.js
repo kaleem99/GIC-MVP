@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
-import { FileUploader } from "react-drag-drop-files";
 import BottomPartOfPage from "../components/footer";
 const fileTypes = ["JPEG", "PNG", "GIF"];
 export default function ViewBusinessProfile() {
   const [data, setData] = useState("");
+  const id = window.location.href.split(":")[3];
   const redirectToJobPost = () => {
     window.location.href = "/job-post";
   };
@@ -16,17 +16,19 @@ export default function ViewBusinessProfile() {
       method: "GET",
     })
       .then((res) => res.json())
-      .then((result) => setData(result.businessData))
+      .then((result) => setData(result.businessData[id-1]))
       .catch((err) => console.log("error"));
   };
+  console.log(data)
   return (
     <div className="w-100 h-100 bg-light-gray">
       <nav className="w-100 bg-white h3 br2 tc ma1 shadow-2">
         <ul>
           <li></li>
-          <li className="left">
-            <h2 className="w-100">Methiteia</h2>
-          </li>
+          {/* <li className="left">
+          </li> */}
+          <h2 className="w-100">Methiteia</h2>
+
         </ul>
       </nav>
       {/* <br></br> */}
@@ -48,21 +50,14 @@ export default function ViewBusinessProfile() {
           <div class="flex w-100 h-75">
             <div class=" w-80 h-100 br3 ml6 bg-white">
               <div className="w-100 br1 bg-light-gray h4 pl3">
-                <h1>{"Name Of The Organization"}</h1>
-                <h3>{"location"}</h3>
+                <h1>{data.companyname}</h1>
+                <h3>{data.location}</h3>
               </div>
               <div className="w-75 bg-light-gray h-75 pl3">
                 <h3>About Us</h3>
                 <h3>Who We Are</h3>
                 <p>
-                  The organization overview in a nonprofit job description
-                  shares key descriptors of the organization. It should include
-                  information that will help interested external candidates
-                  better assess their fit with the organization and better
-                  understand the organization's goals and beneficiaries. It
-                  should include information that will help interested external
-                  candidates better assess their fit with the organization and
-                  better understand the organization's goals and beneficiaries.
+                 {data.aboutcompany}
                 </p>
                 <div className="w-75 h5 bg-light-blue"></div>
               </div>

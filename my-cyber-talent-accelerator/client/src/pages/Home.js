@@ -39,6 +39,7 @@ const HomePage = () => {
       <br></br>
       <div className="w-100 h-25 bg-light-gray br2">
         <h2>About Us</h2>
+        <p>We aim to help change the skills shortage gap in Cyber Security</p>
       </div>
       <br></br>
       <div className="w-100 h-50 bg-gray br2">
