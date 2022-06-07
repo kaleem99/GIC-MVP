@@ -1,12 +1,12 @@
 import BottomPartOfPage from "../components/footer";
 import React, { useState } from "react";
 // import { json } from "body-parser";
-
+import { configuration } from "../configuration";
 export default function SignInComBus() {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const handleChange1 = (event) => {
-    setUsername(event.target.value);
+    setEmail(event.target.value);
   };
   const handleChange2 = (event) => {
     setPassword(event.target.value);
@@ -16,13 +16,13 @@ export default function SignInComBus() {
     PostLoginDetails();
   };
   const PostLoginDetails = () => {
-    fetch("http://localhost:5000/Business-Sign-In", {
+    fetch(`http://localhost:${configuration.port}/Business-Sign-In`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        username: username,
+        email: email,
         password: password,
       }),
     })
@@ -43,7 +43,7 @@ export default function SignInComBus() {
         <div className="w-50 h-75 bg-light-gray br3 ma1 pt3">
           {/* <h3>User ID: {id}</h3> */}
           <div className="w-75 h3 center">
-            <h2>Sign into MiCyber Talent Accelerator Business Account</h2>
+            <h2>Sign into Mathiteia Business Account</h2>
           </div>
           <form
             method="post"

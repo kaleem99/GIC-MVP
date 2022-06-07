@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import BottomPartOfPage from "../components/footer";
-const fileTypes = ["JPEG", "PNG", "GIF"];
+import { configuration } from "../configuration";
+
 export default function ViewBusinessProfile() {
   const [data, setData] = useState("");
   const id = window.location.href.split(":")[3];
@@ -12,11 +13,18 @@ export default function ViewBusinessProfile() {
     FetchGetRequest();
   }, []);
   const FetchGetRequest = () => {
-    fetch("http://localhost:5000/View-Business-Profile:id", {
+    fetch(`http://localhost:${configuration.port}/View-Business-Profile:id`, {
       method: "GET",
+
     })
       .then((res) => res.json())
-      .then((result) => setData(result.businessData[id-1]))
+      .then((result) => {
+        result.businessData.map((val) => {
+          if(val.id === parseInt(id)){
+            setData(val)
+          }
+        })
+      })
       .catch((err) => console.log("error"));
   };
   console.log(data)

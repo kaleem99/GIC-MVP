@@ -1,7 +1,7 @@
 import BottomPartOfPage from "../components/footer";
 import React, { useState, useEffect } from "react";
 import BusinessCard from "../components/BusinessCard";
-
+import { configuration } from "../configuration";
 export default function BusinessGridPage() {
   const [data, setData] = useState([]);
   const [companies, setCompanies] = useState([]);
@@ -9,7 +9,7 @@ export default function BusinessGridPage() {
     FetchGetRequest();
   }, []);
   const FetchGetRequest = () => {
-    fetch("http://localhost:5000/Business-GridPage", {
+    fetch(`http://localhost:${configuration.port}/Business-GridPage`, {
       method: "GET",
     })
       .then((res) => res.json())

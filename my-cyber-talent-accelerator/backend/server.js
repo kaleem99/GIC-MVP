@@ -150,12 +150,11 @@ app.post("/newCompanyBusiness", async (req, res) => {
   );
 });
 app.post("/Business-Sign-In", async (req, res) => {
-  console.log(req.body.username)
   let resultData = "Incorrect";
   let id = 0;
   try {
     const result = await pool.query(
-      `SELECT * FROM companybusiness WHERE profilename = $1;`, [req.body.username]
+      `SELECT * FROM companybusiness WHERE businessemail = $1;`, [req.body.email]
     );
     if(result.rows.length === 1){
       if(result.rows[0].password === req.body.password){
@@ -174,8 +173,22 @@ app.get("/Business-GridPage", async(req, res) => {
 })
 app.get("/View-Business-Profile:id", async(req, res) => {
   const result = await pool.query(`SELECT * FROM companybusiness;`)
+  console.log("Hello");
   res.json({businessData: result.rows});
+})
+app.get("/business-sign-up", async(req, res) => {
+  const result = await pool.query(`SELECT * FROM companybusiness;`)
+  const emails = [];
+  const companyName = [];
+  const profileName = [];
+  result.rows.map((val) => {
+    emails.push(val.businessemail)
+    companyName.push(val.companyname)
+    profileName.push(val.profilename)
+  });
+  res.json({resultEmails: emails, resultCompanyName: companyName, resultProfileName: profileName})
 })
 app.listen(PORT, () => {
   console.log(`Server listening on http://localhost:${PORT}`);
 });
+

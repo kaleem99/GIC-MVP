@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-
+import { configuration } from "../configuration";
 export default function StudentProfileView() {
   const [data, setData] = useState([]);
   useEffect(() => {
@@ -7,7 +7,7 @@ export default function StudentProfileView() {
   }, []);
   const id = window.location.href.split(":")[3];
   const FetchGetRequest = () => {
-    fetch("http://localhost:5000/View-StudentProfile:id", {
+    fetch(`http://localhost:${configuration.port}/View-StudentProfile:id`, {
       method: "GET",
     })
       .then((res) => res.json())

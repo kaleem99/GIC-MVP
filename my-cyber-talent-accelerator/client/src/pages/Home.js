@@ -8,10 +8,11 @@ import DisplayTrendingCertifications from "../components/TrendingCertifications"
 import GetAndDisplayJobPosts from "../components/DisplayJobPosts";
 import LatestBlogNews from "../components/latestBlogNews";
 import Carousel from "react-elastic-carousel";
+import { configuration } from "../configuration";
 const HomePage = () => {
   const [data, setData] = useState(null);
   useEffect(() => {
-    fetch("http://localhost:5000/api")
+    fetch(`http://localhost:${configuration.port}/api`)
       .then((response) => response.json())
       .then((response) => setData(response.message));
   }, []);

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import { configuration } from "../configuration";
 export default function PostAJob() {
   const [jobTitle, setJob] = useState("");
   const [company, setCompany] = useState("");
@@ -12,7 +12,7 @@ export default function PostAJob() {
   }, []);
 
   const FetchPostRequest = () => {
-    fetch("http://localhost:5000/jobs", {
+    fetch(`http://localhost:${configuration.port}/jobs`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -31,10 +31,10 @@ export default function PostAJob() {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    // console.log(data);
     setTimeout(() => {
       FetchPostRequest();
-      // window.location.href = "/";
+      alert("Job Posted")
+      window.location.href = "/";
     }, 1500);
   };
 
@@ -54,7 +54,7 @@ export default function PostAJob() {
     setDescription(event.target.value);
   };
   return (
-    <div className="w-100 h-100 bg-light-blue">
+    <div className="w-100 h-100 bg-light-gray">
       <div>
         <form method="post" className="w-50 center tc" onSubmit={handleSubmit}>
           <br></br>

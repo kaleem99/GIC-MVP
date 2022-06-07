@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import BottomPartOfPage from "../components/footer";
-
+import {configuration} from "../configuration"
 function SignUp() {
   const [data, setData] = useState([]);
   const [name, setName] = useState("");
@@ -13,7 +13,7 @@ function SignUp() {
   }, []);
 
   const FetchGetRequest = () => {
-    fetch("http://localhost:5000/api", {
+    fetch(`http://localhost:${configuration.port}/api`, {
       method: "GET",
     })
       .then((res) => res.json())
@@ -22,7 +22,7 @@ function SignUp() {
   };
 
   const FetchPostRequest = () => {
-    fetch("http://localhost:5000/api", {
+    fetch(`http://localhost:${configuration.port}/api`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

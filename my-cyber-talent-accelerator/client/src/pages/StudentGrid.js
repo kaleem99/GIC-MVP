@@ -1,14 +1,14 @@
 import BottomPartOfPage from "../components/footer";
 import React, { useState, useEffect } from "react";
 import StudentCard from "../components/StudentCard";
-
+import { configuration } from "../configuration";
 export default function StudentGridPage() {
   const [data, setData] = useState([]);
   useEffect(() => {
     FetchGetRequest();
   }, []);
   const FetchGetRequest = () => {
-    fetch("http://localhost:5000/Student-grid", {
+    fetch(`http://localhost:${configuration.port}/Student-grid`, {
       method: "GET",
     })
       .then((res) => res.json())

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import { configuration } from "../configuration";
 export default function Profile() {
   const ID = window.location.href.split(":")[3];
   const [Uname, setUName] = useState("");
@@ -13,7 +13,7 @@ export default function Profile() {
     FetchGetRequest();
   }, []);
   const FetchGetRequest = () => {
-    fetch("http://localhost:5000/completeStudentProfile:id", {
+    fetch(`http://localhost:${configuration.port}/completeStudentProfile:id`, {
       method: "GET",
     })
       .then((res) => res.json())

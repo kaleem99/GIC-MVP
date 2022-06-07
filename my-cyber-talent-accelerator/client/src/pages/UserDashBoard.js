@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import { configuration } from "../configuration";
 export default function UserProfileDashBoard() {
   const [user, setUser] = useState([]);
   const [student, setStudent] = useState([]);
@@ -9,7 +9,7 @@ export default function UserProfileDashBoard() {
   }, []);
 
   const FetchGetRequest = () => {
-    fetch("http://localhost:5000/user-profile:id", {
+    fetch(`http://localhost:${configuration.port}/user-profile:id`, {
       method: "GET",
     })
       .then((res) => res.json())

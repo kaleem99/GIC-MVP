@@ -1,7 +1,7 @@
 import { element } from "prop-types";
 import React, { useState, useEffect } from "react";
 import BottomPartOfPage from "../components/footer";
-
+import {configuration} from "../configuration"
 function LoginPage() {
   const [id, setID] = useState("");
   const [visitors, setVisitors] = useState("");
@@ -19,7 +19,7 @@ function LoginPage() {
     PostLoginDetails();
   };
   const PostLoginDetails = () => {
-    fetch("http://localhost:5000/visitors", {
+    fetch(`http://localhost:${configuration.port}/visitors`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { configuration } from "../configuration";
 
 export default function BusinessSignUp() {
   const ID = window.location.href.split(":")[3];
+  const [data, setData] = useState({});
   const [BusinessName, setBusinessName] = useState("");
   const [Pname, setPName] = useState("");
   const [password, setPassword] = useState("");
@@ -10,18 +12,24 @@ export default function BusinessSignUp() {
   const [industry, setIndustry] = useState("");
   const [AboutCompany, setAboutCompany] = useState("");
   useEffect(() => {
-    // FetchGetRequest();
+    FetchGetRequest();
   }, []);
   const FetchGetRequest = () => {
-    fetch("http://localhost:5000/completeStudentProfile:id", {
+    fetch(`http://localhost:${configuration.port}/business-sign-up`, {
       method: "GET",
     })
       .then((res) => res.json())
-      // .then((result) => setData(result.data))
+      .then((result) =>
+        setData(
+          result.resultEmails
+            .concat(result.resultCompanyName)
+            .concat(result.resultProfileName)
+        )
+      )
       .catch((err) => console.log("error"));
   };
   const FetchPostRequest = () => {
-    fetch("http://localhost:5000/newCompanyBusiness", {
+    fetch(`http://localhost:${configuration.port}/newCompanyBusiness`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -34,7 +42,7 @@ export default function BusinessSignUp() {
         location: location,
         businessEmail: businessEmail,
         industry: industry,
-        AboutCompany: AboutCompany
+        AboutCompany: AboutCompany,
       }),
     })
       .then((res) => res.json())
@@ -43,29 +51,44 @@ export default function BusinessSignUp() {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    FetchPostRequest();
-    // window.location.href = "/";
+    setTimeout(() => {
+      if (data.includes(Pname)) {
+        alert("Username already exists");
+        return 0;
+      }
+      if (data.includes(BusinessName)) {
+        alert("Business/Company Name already exists");
+        return 0;
+      }
+      if (data.includes(businessEmail)) {
+        alert("email already exists");
+        return 0;
+      }
+      FetchPostRequest();
+      alert("Account Created Successfully");
+      window.location.href = "/";
+    }, 500);
   };
   const handleChange1 = (event) => {
-    setBusinessName(event.target.value)
+    setBusinessName(event.target.value);
   };
   const handleChange2 = (event) => {
-    setPName(event.target.value)
+    setPName(event.target.value);
   };
   const handleChange3 = (event) => {
-    setPassword(event.target.value)
+    setPassword(event.target.value);
   };
   const handleChange4 = (event) => {
-    setLocation(event.target.value)
+    setLocation(event.target.value);
   };
   const handleChange5 = (event) => {
-    setBusinessEmail(event.target.value)
+    setBusinessEmail(event.target.value);
   };
   const handleChange6 = (event) => {
-    setIndustry(event.target.value)
+    setIndustry(event.target.value);
   };
   const handleChange7 = (event) => {
-    setAboutCompany(event.target.value)
+    setAboutCompany(event.target.value);
   };
   return (
     <div className="w-100 h-100 bg-light-gray tc">
@@ -121,7 +144,7 @@ export default function BusinessSignUp() {
         </label>
         <br></br>
         <label>
-           Business Email
+          Business Email
           <br></br>
           <input
             className="ba pa2 mb3 db w-100"
@@ -133,7 +156,7 @@ export default function BusinessSignUp() {
           <br></br>
         </label>
         <label>
-           Industry
+          Industry
           <br></br>
           <input
             className="ba pa2 mb3 db w-100"
@@ -145,7 +168,7 @@ export default function BusinessSignUp() {
           <br></br>
         </label>
         <label>
-            About The Company/Business
+          About The Company/Business
           <br></br>
           <input
             className="ba pa2 mb3 db w-100 h4"
